@@ -28,30 +28,13 @@ class StreamlitVisGraph extends StreamlitComponentBase {
     }
   
     const options = JSON.parse(this.props.args["config"]);
-
-    const events = {
-
-      selectNode: (event:any) => {
-        Streamlit.setComponentValue(event.nodes[0]);
-      },
-
-      doubleClick: (event:any) => {
-        console.log(event.nodes);
-        // let link = nodes;
-        let lookup_node = lookup_node_id(event.nodes[0], nodes);
-        let link = lookup_node.div.innerHTML;
-        if(link){
-          window.open(link);
-        }
-      }
-    };
+    
     return (
       <span>
     
       <VisGraph
       graph={graph}
       options={options}
-      events={events}
       getNetwork={(network: any) => {
         //  if you want access to vis.js network api you can set the state in a parent component using this property
         //console.log(network);
